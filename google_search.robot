@@ -3,7 +3,7 @@ Library           SeleniumLibrary
 
 
 *** Variables ***
-${BROWSER}          Chrome
+${BROWSER}          Edge
 ${SEARCH_TERM}      robot framework
 ${SEARCH_RESULT}    Automate
 ${SEARCH_RESULT-2}  ภาษาไพทอน
@@ -26,6 +26,14 @@ Search Google and Verify Results-2
     Verify Search Results-2
     Close Browser    
 
+Search Google and Verify Results-3
+    [Documentation]    Test case to search Google and verify results
+    Open Google
+    Input XSearch Term
+    Press Enter Google Search
+    Verify Search Results-2
+    Close Browser  
+
 Search Google Xpath
     [Documentation]    Test case to search Google and verify results
     Open Google
@@ -40,7 +48,7 @@ Search Google Xpath
 Search Yahoo and Verify Results
     [Documentation]    Test case to search Yahoo and verify results
     Open Yahoo
-    Input Search Term
+    Input Yahoo Search Term
     Press Enter Yahoo Search
     Verify Search Results
     Close Browser
@@ -53,17 +61,25 @@ Open Google
 Open Yahoo
     Open Browser    https://www.yahoo.com    ${BROWSER}
 
+
+
 Input Search Google Term
     Input Text name=q    ${SEARCH_TERM}
 
+Input Xpath Term
+    Input Text  Xpath=//*[@name="q"]    ${SEARCH_TERM}
+
+Input Yahoo Search Term
+    Input Text  name=p  ${SEARCH_TERM}
+
 Press Enter Google Search
-    Press Keys    name=q   Enter    
+    Press Keys    name=q   Enter  
+
+
 Press Enter Yahoo Search
     Press Keys    name=p       Enter
 
-Input Search Google Xpath Term
-    Input Text Xpath=//*
-    [@id="APjFqb"]    ${SEARCH_TERM}
+
 
 Verify Search Results
     Wait Until Page Contains    ${SEARCH_RESULT}
